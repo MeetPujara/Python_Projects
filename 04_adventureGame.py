@@ -1,46 +1,55 @@
-name_input = input("Enter Your Name: ")
-print(f"Welcome {name_input} To This Adventure!")
+name_input = input("Enter Your Name: ").strip()
+print(f"\nWelcome {name_input} to This Adventure!")
 
 while True:
-    answer = input(
-        "You are on a dirt road, it has come to an end and you can go left or right. Which way would you like to go? ").lower()
+    print("\nYou are on a dirt road. It has come to an end and you can go left or right.")
+    answer = input("Which way would you like to go? (left/right): ").strip().lower()
 
-    if answer.lower().strip() == "left":
+    if answer == "left":
         answer = input(
-            "You come to a river, you can walk around it or swim accross? Type 'walk' to walk around and 'swim' to swim accross: ")
-        if answer.lower().strip() == "swim":
-            print("You swam acrross and were eaten by an alligator.")
-            user_lost = input("You Lost,want to Try Again(Y/N)")
-            if user_lost.lower().strip() == 'y':
-                answer
+            "You come to a river. Do you want to walk around or swim across? (walk/swim): "
+        ).strip().lower()
+
+        if answer == "swim":
+            print("You swam across and were eaten by an alligator.")
+            user_lost = input("You lost. Want to try again? (Y/N): ").strip().lower()
+            if user_lost == 'y':
+                continue
             else:
-                print("You Lose!")
-                quit()
-        elif answer.lower().strip() == "walk":
-            print("You walked for many miles, ran out of water and you lost the game.")
+                print("Game Over. Thanks for playing!")
+                break
+
+        elif answer == "walk":
+            print("You walked for miles, ran out of water, and lost the game.")
+
         else:
-            print('Not a valid option. You lose.')
+            print("Not a valid option. You lose.")
 
-    elif answer.lower().strip() == "right":
+    elif answer == "right":
         answer = input(
-            "You come to a bridge, it looks wobbly, do you want to cross it or head back (cross/back)? ")
+            "You come to a wobbly bridge. Do you want to cross it or go back? (cross/back): "
+        ).strip().lower()
 
-        if answer.lower().strip() == "back":
+        if answer == "back":
             print("You go back and lose.")
-        elif answer.lower().strip() == "cross":
+        elif answer == "cross":
             answer = input(
-                "You cross the bridge and meet a stranger. Do you talk to them (yes/no)? ")
+                "You cross the bridge and meet a stranger. Do you talk to them? (yes/no): "
+            ).strip().lower()
 
-            if answer.lower().strip() == "yes":
-                print("You talk to the stanger and they give you gold. You WIN!")
-            elif answer.lower().strip() == "no":
-                print("You ignore the stranger and they are offended and you lose.")
+            if answer == "yes":
+                print("The stranger gives you gold. You WIN!")
+            elif answer == "no":
+                print("You ignore the stranger. They get offended and you lose.")
             else:
-                print('Not a valid option. You lose.')
+                print("Not a valid option. You lose.")
         else:
-            print('Not a valid option. You lose.')
-
+            print("Not a valid option. You lose.")
     else:
-        print('Not a valid option. You lose.')
+        print("Not a valid option. You lose.")
 
-    print("Thank you for trying",name_input)
+    print(f"\nThank you for trying, {name_input}!")
+    play_again = input("Do you want to play again? (Y/N): ").strip().lower()
+    if play_again != 'y':
+        print("Goodbye!")
+        break
